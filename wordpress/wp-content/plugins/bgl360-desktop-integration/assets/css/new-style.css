@@ -1,0 +1,52 @@
+
+.entry-title {
+    display:none !important;
+}
+
+
+.container-main  {
+    /*border:1px solid green;*/
+    padding:10% 0%;
+}
+
+
+
+
+
+.container-sub, .container-sub-import {
+    margin: auto;
+    width: 50%;
+    /*border:1px solid red;*/
+}
+.container-sub-import ul li {
+    list-style:none;
+}
+
+
+.container-sub div.row {
+    border:1px dashed  black;
+    padding:10% 10%;
+}
+
+.container-sub div.row div {
+    /*     border:1px solid yellow; */
+    text-align:right !important;
+}
+
+.container-sub input[type='submit'] {
+    padding:0px;
+    margin:0px;
+    height:auto;
+    float:left;
+    border:1px solid grey;
+    border-radius:5px;
+    padding:0px 5px;
+}
+
+.container-sub input[type='file'] {
+    margin:auto;
+}
+
+
+
+

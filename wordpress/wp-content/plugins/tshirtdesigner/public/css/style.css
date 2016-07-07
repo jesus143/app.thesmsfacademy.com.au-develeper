@@ -1,0 +1,16 @@
+.tsd-tshirt-color {
+	border:1px solid red !important;	
+	float:left;
+	height:100%; 
+	width:30%;
+}
+
+.tsd-tshirt-color ul {
+	list-style:none; 
+}
+
+.tsd-tshirt-color ul li{
+	border:1px solid red;
+	float:left;
+	width:69px;
+}
