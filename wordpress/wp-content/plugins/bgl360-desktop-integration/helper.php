@@ -139,3 +139,9 @@ function bgl360_di_my_cust_filename($dir, $name, $ext) {
     return $_SESSION['bgl360_di_custom_upload_name'] . $ext;
 }
 
+function bgl360_di_get_uploaded_file_path_to_folder($filePath) {
+    $uploadedPathToFolder = str_replace('.zip', '', $filePath);
+    $uploadedPathToFolder = str_replace('.rar', '', $uploadedPathToFolder);
+    return $uploadedPathToFolder;
+}
+

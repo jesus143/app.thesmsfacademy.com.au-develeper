@@ -2,9 +2,10 @@
 
 <?php if(!function_exists('wp_get_current_user')) {include(ABSPATH . "wp-includes/pluggable.php");}
 
-require_once('helper.php');
 
-$paths = [ 'config', 'controller', 'controller/Post', 'view' ];
+
+
+$paths = [ 'config' ];
 
 foreach($paths as $key => $path):
 
@@ -14,6 +15,12 @@ foreach($paths as $key => $path):
         require($file);
     }
 endforeach;
+
+
+
+
+
+require_once('helper.php');
 
 $path = plugin_dir_path(__FILE__);
 require_once($path . '/model/People.php');
@@ -29,6 +36,20 @@ new \App\People();
 new \App\Office();
 new \App\Firm();
 new \App\Chart();
+
+
+$paths = [ 'controller', 'controller/Post', 'view' ];
+
+foreach($paths as $key => $path):
+
+    $files = glob(plugin_dir_path(__FILE__) . $path .'/*.php');
+
+    foreach ($files as $file) {
+        require($file);
+    }
+endforeach;
+
+
 
 
 
