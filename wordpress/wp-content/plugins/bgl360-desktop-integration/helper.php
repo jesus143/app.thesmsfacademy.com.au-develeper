@@ -125,7 +125,11 @@ function delete_directory($dirname) {
  * add_filter( 'upload_dir', 'wpse_141088_upload_dir' );
  * remove_filter( 'upload_dir', 'wpse_141088_upload_dir' );
  */
-function wpse_141088_upload_dir( $dir ) {
+function wpse_141088_upload_dir( $dir, $user_name ) {
+
+
+
+
     return array(
         'path'   => bgl360_di_upload_zip_file_dir,
         'url'    => bgl360_di_upload_zip_file_dir,
@@ -145,3 +149,14 @@ function bgl360_di_get_uploaded_file_path_to_folder($filePath) {
     return $uploadedPathToFolder;
 }
 
+function bgl360_di_rename_uploaded_file($pathToFile, $currentFileName, $newFileName) {
+    return rename( $pathToFile . '/' . $currentFileName,  $pathToFile . '/' .  $newFileName);
+}
+
+
+function bgl360_di_get_file_name($filePath) {
+//    $path = "/home/httpd/html/index.php";
+    $file = basename($filePath);         // $file is set to "index.php"
+    $file = basename($filePath, ".php"); // $file is set to "index"
+    return $file;
+}

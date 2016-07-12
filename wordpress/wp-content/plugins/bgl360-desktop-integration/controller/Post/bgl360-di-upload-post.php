@@ -1,4 +1,17 @@
 <?php
+$current_user = wp_get_current_user();
+/**
+ * @example Safe usage: $current_user = wp_get_current_user();
+ * if ( !($current_user instanceof WP_User) )
+ *     return;
+ */
+//echo 'Username: ' . $current_user->user_login . '<br />';
+//echo 'User email: ' . $current_user->user_email . '<br />';
+//echo 'User first name: ' . $current_user->user_firstname . '<br />';
+//echo 'User last name: ' . $current_user->user_lastname . '<br />';
+//echo 'User display name: ' . $current_user->display_name . '<br />';
+//echo 'User ID: ' . $current_user->ID . '<br />';
+//
 
 if(isset($_POST['bgl360_dt_upload'])) {
 
@@ -17,6 +30,9 @@ if(isset($_POST['bgl360_dt_upload'])) {
 
 
 
+
+
+
     // Do our thing. WordPress will move the file to 'uploads/mycustomdir'.
     $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
 
@@ -24,10 +40,6 @@ if(isset($_POST['bgl360_dt_upload'])) {
         echo "File is valid, and was successfully uploaded.\n";
         var_dump( $movefile );
         $_SESSION['bgl360_di_uploaded_file_settings'] = $movefile;
-
-
-
-
         $_SESSION['bgl360_di_uploaded_file_path_to_folder'] = bgl360_di_get_uploaded_file_path_to_folder($movefile['file']);
     } else {
         /**
@@ -37,12 +49,20 @@ if(isset($_POST['bgl360_dt_upload'])) {
         echo $movefile['error'];
     }
 
-    echo "file path = " .  $movefile['file'];
+    //print_r($movefile);
 
+
+    //data to replace folder name where the .dbf file is located
+    // not in used
+    $current_user = wp_get_current_user();
+    $currentFileName =  str_replace('.zip', '', bgl360_di_get_file_name($movefile['file']));
+    $newFileName = $current_user->user_login;
+
+    //echo " <br><br>current file name $currentFileName and new file name $newFileName and file path = " .  $movefile['file'];
     // Set everything back to normal.
     remove_filter( 'upload_dir', 'wpse_141088_upload_dir' );
 
-    //extract file
+    // extract .zip file to the specific folder
     $zip = new ZipArchive;
     if ($zip->open($movefile['file']) === TRUE) {
         $zip->extractTo( bgl360_di_upload_zip_file_dir );

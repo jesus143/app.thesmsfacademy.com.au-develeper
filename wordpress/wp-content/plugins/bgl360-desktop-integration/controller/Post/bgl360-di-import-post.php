@@ -75,16 +75,13 @@ if(isset($_POST['bgl360_di_import'])) {
 
         // Care Of
         $entry['265'] = 'undefined yet';
-        echo "<pre>";
+        // echo "<pre>";
             print_r($entry);
-        echo "<pre>";
-
+        // echo "<pre>";
     }
 
     if($_POST['import_at'] > 0) {
-
         print_r($_SESSION);
-
         //unlink($_SESSION['bgl360_di_uploaded_file_path_to_folder']);
         //  unlink($_SESSION['bgl360_di_uploaded_file_settings']['file']);
     }

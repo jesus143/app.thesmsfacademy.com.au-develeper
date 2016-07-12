@@ -1,7 +1,12 @@
 <?php
+$current_user = wp_get_current_user();
 
-define('bgl360_di_upload_zip_file_dir', plugin_dir_path(__DIR__) . 'upload');
-define('bgl360_di_upload_zip_file_dir_sub', 'upload');
+
+//set username when user uploaded the .zip files
+define('bgl360_di_upload_zip_file_dir', plugin_dir_path(__DIR__) . 'upload/' . $current_user->user_login);
+define('bgl360_di_upload_zip_file_dir_sub', $current_user->user_login);
+
+
 
 //Path to the uploaded .zip file need to change
 define('bgl360_di_dbf_uploaded_file_path' , bgl360_di_upload_zip_file_dir . '/BGL Desktop Integration/temp_dbf/new/');
