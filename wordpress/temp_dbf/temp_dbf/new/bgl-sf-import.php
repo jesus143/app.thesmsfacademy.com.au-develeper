@@ -3,8 +3,8 @@
     error_reporting('-1');
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
-    require_once( $_SERVER['DOCUMENT_ROOT']."\wp-blog-header.php");
-    if($current_user->ID < 1) { header("location: https://app.thesmsfacademy.com.au/wp-login.php"); }
+    //require_once( $_SERVER['DOCUMENT_ROOT']."\wp-blog-header.php");
+    //if($current_user->ID < 1) { header("location: https://app.thesmsfacademy.com.au/wp-login.php"); }
     global $wpdb;
 
     $dbf_file = 'chart.dbf';
@@ -74,7 +74,6 @@
         return $arr;
     }
 
-
     function printR($array,$title=''){
 
         if(is_array($array)){
@@ -102,7 +101,6 @@
         return false;
     }
 
-
     function recursive_array_searchby_key($needle,$haystack,$key) {
 
         $n_array = array();
@@ -120,32 +118,32 @@
                 if($k==$key){
                     $n_array[$k] = $v;
                 }
-
             }
-
-
-
         endforeach;
         $return = recursive_array_search($needle,$n_array);
         return ($return);
-
-
     }
 
-$formId = 6;
-    $i = 0;
 
-    $formId		  		  = 6;
-    $form 		  		  = GFAPI::get_form( $formId );
-    $title 		  		  = '';
-    $current_user   	  = wp_get_current_user();
-    $user_id 	          = $current_user->ID;
-    $entry                = array();
-    $entry['form_id']     = $formId;
-    $entry['created_by']  = $user_id;
-    $entry['orderStatus'] = 'incomplete';
-    $numMembers 		  = $firm[0]['MEMBERS'];
+/**
+ *
+ */
 
+            $formId = 6;
+            $i = 0;
+
+            $formId		  		  = 6;
+            //$form 		  		  = GFAPI::get_form( $formId );
+            $title 		  		  = '';
+            //$current_user   	  = wp_get_current_user();
+            $user_id 	          = $current_user->ID;
+            $entry                = array();
+            $entry['form_id']     = $formId;
+            $entry['created_by']  = $user_id;
+            $entry['orderStatus'] = 'incomplete';
+            $numMembers 		  = $firm[0]['MEMBERS'];
+
+            echo "total members " . $numMembers;
 
             $entry['2']     = $firm[$i]['ENTITYNAME'];
 			$entry['137']   = 'BGL SF Desktop Import';
@@ -153,6 +151,7 @@ $formId = 6;
             $entry['337']   = 'Other Address'; 
             $entry['357']   = 'Manual Address Input';
             $entry['358']   = 'Manual Address Input';
+
             /* Fund Address */
             $people_trustee_key = recursive_array_searchby_key($firm[$i]['TRUSTEE'],$people,'PCODE'); //
             $pcode = $people[$people_trustee_key]['PCODE'];
@@ -174,6 +173,8 @@ $formId = 6;
 
             /* FIRM */
             $entry['12']     = $firm[$i]['MEMBERS'];
+
+
             /*/ FIRM */
 
 
@@ -405,6 +406,8 @@ $formId = 6;
                 /** Member 1 */
             }
 
+
+
             /* Fund Address */
             $people_regadd_key = recursive_array_searchby_key($firm[$i]['REGADD'],$people,'PCODE'); //
             $pcode = $people[$people_regadd_key]['PCODE'];
@@ -421,7 +424,14 @@ $formId = 6;
 
     printR($entry,'ENTRY');
     // Add entry to database
-    $importResult = $formId.' - '.GFAPI::add_entry($entry);
-    echo 'Import: '.$importResult;
+    //$importResult = $formId.' - '.GFAPI::add_entry($entry);
+    //echo 'Import: '.$importResult;
 
  // End post
+
+
+
+
+
+
+

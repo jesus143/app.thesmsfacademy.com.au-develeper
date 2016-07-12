@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 /*
 Plugin Name: Bgl360 Desktop Integration
 Plugin URI: https://www.automationlab.com.au
@@ -8,7 +10,6 @@ Version: 0.1
 Author URI: http://michaelbarbecho.com/
 Author Mail: michael@automationlab.com.au
 */
-
 
 require('autoload.php');
 

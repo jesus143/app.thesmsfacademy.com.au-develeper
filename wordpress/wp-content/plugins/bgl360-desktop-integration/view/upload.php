@@ -12,7 +12,7 @@ function bgl360_di_upload ($atts, $content=null) {
     $html .='<div class="container-sub" >';
 
 
-    $html .= '<form method="POST" >';
+    $html .= '<form method="POST" method="post" enctype="multipart/form-data">';
 
     $html .='
             <div class="row">

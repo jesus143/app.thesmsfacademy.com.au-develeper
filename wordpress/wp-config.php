@@ -26,7 +26,7 @@ define('DB_NAME', 'smsf_tpocom_dash_dev');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '1234567890');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
