@@ -45,9 +45,9 @@ if(isset($_POST['bgl360_dt_upload'])) {
         echo $movefile['error'];
     }
 
-    echo "<pre>";
-        print_r($movefile);
-    echo "</pre>";
+    //echo "<pre>";
+     //   print_r($movefile);
+    //echo "</pre>";
 
 
     //data to replace folder name where the .dbf file is located

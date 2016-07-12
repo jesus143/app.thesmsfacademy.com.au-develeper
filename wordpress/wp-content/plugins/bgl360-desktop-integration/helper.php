@@ -40,16 +40,13 @@ function printR($array,$title=''){
 
     if(is_array($array)){
 
-        echo $title."<br/>".
-            "||---------------------------------||<br/>".
-            "<pre>";
-        print_r($array);
-        echo "</pre>".
-            "END ".$title."<br/>".
-            "||---------------------------------||<br/>";
+        //echo $title."<br/>".  "||---------------------------------||<br/>".
+           // "<pre>";
+        //print_r($array);
+        //echo "</pre>".  "END ".$title."<br/>". "||---------------------------------||<br/>";
 
     }else{
-        echo $title."<br/>"."<pre>".$array.'</pre>';
+        //echo $title."<br/>"."<pre>".$array.'</pre>';
     }
 }
 

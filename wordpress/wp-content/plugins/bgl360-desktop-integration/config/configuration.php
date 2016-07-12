@@ -12,8 +12,7 @@ $current_user = wp_get_current_user();
 //define('bgl360_di_zip_upload_path', );
 $_SESSION['bgl360_di_upload_zip_file_dir'] = (!empty($_SESSION['bgl360_di_upload_zip_file_dir'])) ? $_SESSION['bgl360_di_upload_zip_file_dir'] : null;
 
-echo "<br> bgl360_di_upload_zip_file_dir = " . $_SESSION['bgl360_di_upload_zip_file_dir'];
-
+//echo "<br> bgl360_di_upload_zip_file_dir = " . $_SESSION['bgl360_di_upload_zip_file_dir'];
 
 
 //set username when user uploaded the .zip files
