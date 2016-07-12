@@ -27,7 +27,6 @@ $_SESSION['bgl360_di_uploaded_file_settings'] = (!empty($_SESSION['bgl360_di_upl
 
 $_SESSION['bgl360_di_uploaded_file_path_to_folder'] = (!empty($_SESSION['bgl360_di_uploaded_file_path_to_folder'])) ? $_SESSION['bgl360_di_uploaded_file_path_to_folder'] : null;
 
-
 $_SESSION['bgl360_di_forms'] = array( array('form_id'=>0, 'form_name'=>'- Select One -') , array('form_id'=>6, 'form_name'=>'NEW SMSF'));
 
 

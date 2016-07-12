@@ -8,7 +8,12 @@ if(isset($_POST['bgl360_di_import'])) {
     $fund = new \App\Fund();
     $trustee = new \App\Trustees();
 
-    if ($_POST['import_at'] == 6)
+
+    $form_id = $_POST['import_at'];
+
+
+    //new smsf
+    if ($form_id == 6)
     {
 
         $fund_member_selected = $_POST['fundMemberSelected'];
@@ -34,29 +39,29 @@ if(isset($_POST['bgl360_di_import'])) {
 
             if ($member_counter == 1)
             {
-                $entry['71'] = $fund->fundMemberTitle;
-                $entry['14'] = $fund->fundMemberFirstName;
-                $entry['72'] = $fund->fundMemberSureName;
-                $entry['417'] = $fund->fundMemberGender;
-                $entry['323'] = $fund->fundMemberFullName;
-                $entry['81'] = $fund->fundMemberTFN;
-                $entry['15'] = $fund->fundMemberDOB;
-                $entry['17'] = "Other Address";
+                $entry['71']    = $fund->fundMemberTitle;
+                $entry['14']    = $fund->fundMemberFirstName;
+                $entry['72']    = $fund->fundMemberSureName;
+                $entry['417']   = $fund->fundMemberGender;
+                $entry['323']   = $fund->fundMemberFullName;
+                $entry['81']    = $fund->fundMemberTFN;
+                $entry['15']    = $fund->fundMemberDOB;
+                $entry['17']    = "Other Address";
                 $entry['359.1'] = "Manual Address Input";
-                $entry['316'] = $fund->fundMemberAddress;
+                $entry['316']   = $fund->fundMemberAddress;
             }
             else if ($member_counter == 2)
             {
-                $entry['73'] = $fund->fundMemberTitle;
-                $entry['25'] = $fund->fundMemberFirstName;
-                $entry['74'] = $fund->fundMemberSureName;
-                $entry['418'] = $fund->fundMemberGender;
-                $entry['324'] = $fund->fundMemberFullName;
-                $entry['82'] = $fund->fundMemberTFN;
-                $entry['24'] = $fund->fundMemberDOB;
-                $entry['169'] = "Other Address";
+                $entry['73']    = $fund->fundMemberTitle;
+                $entry['25']    = $fund->fundMemberFirstName;
+                $entry['74']    = $fund->fundMemberSureName;
+                $entry['418']   = $fund->fundMemberGender;
+                $entry['324']   = $fund->fundMemberFullName;
+                $entry['82']    = $fund->fundMemberTFN;
+                $entry['24']    = $fund->fundMemberDOB;
+                $entry['169']   = "Other Address";
                 $entry['360.1'] = "Manual Address Input";
-                $entry['317'] = $fund->fundMemberAddress;
+                $entry['317']   = $fund->fundMemberAddress;
             }
             else if ($member_counter == 3)
             {
@@ -78,6 +83,14 @@ if(isset($_POST['bgl360_di_import'])) {
         // echo "<pre>";
             print_r($entry);
         // echo "<pre>";
+    } else if ($form_id == 56) {
+
+    } else if ($form_id == 15) {
+
+    } else if ($form_id == 53) {
+
+    } else if ($form_id == 65) {
+
     }
 
     if($_POST['import_at'] > 0) {
