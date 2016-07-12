@@ -86,7 +86,9 @@ class Chart {
     public static function getChartWithPCode() {
          $dataArray = array();
         foreach(self::$chart_dbf_file as $key => $valueArray) {
-            if( !empty(str_replace(' ', '',$valueArray['PCODE']))) {
+
+            $pCode = str_replace(' ', '',$valueArray['PCODE']);
+            if(!empty($pCode)) {
                 if(!self::isExist($dataArray, $valueArray['PCODE'])) {
                     $dataArray[] = $valueArray;
                 }

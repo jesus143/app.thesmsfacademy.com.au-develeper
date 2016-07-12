@@ -48,6 +48,22 @@ function my_init_method() {
 /**
  * @TODO need to get rename the correct folder uploaded to the server so that we can upload different name of .zip files upload/username/renamefolder
  *
+ *
+ *
+ *
+ * Instructions:
+ *
+ * create page for upload bgl360
+ * add this short code: [bgl360-di-upload]
+ *
+ * create page for import bgl360
+ * add this short code: [bgl360-di-import]
+ *
+ * and configure
+ * config/configuration.php
+ * for redirect and other stuff.
+ *
+ * BOOM!
  */
 
 

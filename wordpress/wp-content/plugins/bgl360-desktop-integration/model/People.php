@@ -18,7 +18,7 @@ class People {
     public static function getPeopleByPCode($pCode) {
         $peopleArray1 = array();
         foreach(self::$people_dbf_array as $key => $peopleArray) {
-            if(!empty($peopleArray['PCODE'] == $pCode)) {
+            if($peopleArray['PCODE'] == $pCode) {
                 $peopleArray1[] = $peopleArray;
             }
         }
@@ -28,7 +28,7 @@ class People {
     public static function getMemberTotal($pCode) {
         $counter=0;
         foreach(self::$people_dbf_array as $key => $peopleArray) {
-            if(!empty($peopleArray['PCODE'] == $pCode)) {
+            if($peopleArray['PCODE'] == $pCode) {
                 $counter++;
             }
         }
@@ -38,7 +38,7 @@ class People {
     public static function getTrusteesMemberByFirmPCode($pCode) {
         $peopleArray1 = array();
         foreach(self::$people_dbf_array as $key => $peopleArray) {
-            if(!empty($peopleArray['PCODE'] == $pCode)) {
+            if($peopleArray['PCODE'] == $pCode) {
                 $peopleArray1[] = $peopleArray;
             }
         }

@@ -2,14 +2,35 @@
 $current_user = wp_get_current_user();
 
 
+//create subfolder for username
+//define('bgl360_di_upload_zip_file_dir', plugin_dir_path(__DIR__) . 'upload/' . $current_user->user_login);
+//define('bgl360_di_upload_zip_file_dir_sub', $current_user->user_login);
+
+
+
+
+//define('bgl360_di_zip_upload_path', );
+$_SESSION['bgl360_di_upload_zip_file_dir'] = (!empty($_SESSION['bgl360_di_upload_zip_file_dir'])) ? $_SESSION['bgl360_di_upload_zip_file_dir'] : null;
+
+echo "<br> bgl360_di_upload_zip_file_dir = " . $_SESSION['bgl360_di_upload_zip_file_dir'];
+
+
+
 //set username when user uploaded the .zip files
-define('bgl360_di_upload_zip_file_dir', plugin_dir_path(__DIR__) . 'upload/' . $current_user->user_login);
-define('bgl360_di_upload_zip_file_dir_sub', $current_user->user_login);
+define('bgl360_di_upload_zip_file_dir', $_SESSION['bgl360_di_upload_zip_file_dir']);
+//define('bgl360_di_upload_zip_file_dir_sub', 'upload');
 
 
 
 //Path to the uploaded .zip file need to change
 define('bgl360_di_dbf_uploaded_file_path' , bgl360_di_upload_zip_file_dir . '/BGL Desktop Integration/temp_dbf/new/');
+
+
+
+
+
+
+
 
 define('bgl360_di_fund_deffs', bgl360_di_dbf_uploaded_file_path . 'funddefs.dbf');
 define('bgl360_di_people_dbf', bgl360_di_dbf_uploaded_file_path . 'people.dbf');

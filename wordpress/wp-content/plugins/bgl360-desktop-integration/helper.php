@@ -128,8 +128,6 @@ function delete_directory($dirname) {
 function wpse_141088_upload_dir( $dir, $user_name ) {
 
 
-
-
     return array(
         'path'   => bgl360_di_upload_zip_file_dir,
         'url'    => bgl360_di_upload_zip_file_dir,
@@ -159,4 +157,18 @@ function bgl360_di_get_file_name($filePath) {
     $file = basename($filePath);         // $file is set to "index.php"
     $file = basename($filePath, ".php"); // $file is set to "index"
     return $file;
+}
+
+function bgl360_di_get_file_path_through_file_name($filePath) {
+
+    $filePathArray  = explode('/', $filePath);
+    echo "<br> file path 1 " . $filePathArray[count($filePathArray)];
+    echo "<br> file path 2 " . $filePathArray[count($filePathArray)-1];
+    $filePathArray[count($filePathArray)-1] = '';
+    $filePath = implode('/', $filePathArray);
+
+    echo "<br> new file path " . $filePath;
+
+    return $filePath;
+
 }

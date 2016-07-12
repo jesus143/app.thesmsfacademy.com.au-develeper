@@ -1,22 +1,25 @@
 <?php
-$current_user = wp_get_current_user();
-/**
- * @example Safe usage: $current_user = wp_get_current_user();
- * if ( !($current_user instanceof WP_User) )
- *     return;
- */
-//echo 'Username: ' . $current_user->user_login . '<br />';
-//echo 'User email: ' . $current_user->user_email . '<br />';
-//echo 'User first name: ' . $current_user->user_firstname . '<br />';
-//echo 'User last name: ' . $current_user->user_lastname . '<br />';
-//echo 'User display name: ' . $current_user->display_name . '<br />';
-//echo 'User ID: ' . $current_user->ID . '<br />';
-//
+
 
 if(isset($_POST['bgl360_dt_upload'])) {
 
+    $current_user = wp_get_current_user();
+    /**
+     * @example Safe usage: $current_user = wp_get_current_user();
+     * if ( !($current_user instanceof WP_User) )
+     *     return;
+     */
+    echo 'Username: ' . $current_user->user_login . '<br />';
+    echo 'User email: ' . $current_user->user_email . '<br />';
+    echo 'User first name: ' . $current_user->user_firstname . '<br />';
+    echo 'User last name: ' . $current_user->user_lastname . '<br />';
+    echo 'User display name: ' . $current_user->display_name . '<br />';
+    echo 'User ID: ' . $current_user->ID . '<br />';
+
+
+    echo "bgl360_di_upload_zip_file_dir = " . bgl360_di_upload_zip_file_dir;
     // Register our path override.
-    add_filter( 'upload_dir', 'wpse_141088_upload_dir' );
+//    add_filter( 'upload_dir', 'wpse_141088_upload_dir' );
 
     if ( ! function_exists( 'wp_handle_upload' ) ) {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -24,14 +27,7 @@ if(isset($_POST['bgl360_dt_upload'])) {
 
     $uploadedfile = $_FILES['file'];
 
-
     $upload_overrides = array( 'test_form' => false);
-
-
-
-
-
-
 
     // Do our thing. WordPress will move the file to 'uploads/mycustomdir'.
     $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
@@ -49,7 +45,9 @@ if(isset($_POST['bgl360_dt_upload'])) {
         echo $movefile['error'];
     }
 
-    //print_r($movefile);
+    echo "<pre>";
+        print_r($movefile);
+    echo "</pre>";
 
 
     //data to replace folder name where the .dbf file is located
@@ -58,14 +56,26 @@ if(isset($_POST['bgl360_dt_upload'])) {
     $currentFileName =  str_replace('.zip', '', bgl360_di_get_file_name($movefile['file']));
     $newFileName = $current_user->user_login;
 
-    //echo " <br><br>current file name $currentFileName and new file name $newFileName and file path = " .  $movefile['file'];
+    echo " <br><br>current file name $currentFileName and new file name $newFileName and file path = " .  $movefile['file'];
     // Set everything back to normal.
-    remove_filter( 'upload_dir', 'wpse_141088_upload_dir' );
+    // remove_filter( 'upload_dir', 'wpse_141088_upload_dir' );
+
+
+
+
+    //get file path only
+
+    $filePath = bgl360_di_get_file_path_through_file_name($movefile['file']);
+
+
+    $_SESSION['bgl360_di_upload_zip_file_dir'] = $filePath;
+
+    echo "<br> base name = " . basename($movefile['file']);
 
     // extract .zip file to the specific folder
     $zip = new ZipArchive;
     if ($zip->open($movefile['file']) === TRUE) {
-        $zip->extractTo( bgl360_di_upload_zip_file_dir );
+        $zip->extractTo( $filePath );
         $zip->close();
         echo 'ok';
     } else {
@@ -77,10 +87,8 @@ if(isset($_POST['bgl360_dt_upload'])) {
 
     // save uploaded settings to session
 
-
     // redirect to url import
    wp_redirect( site_url() . '/'. bgl360_di_page_name_parent . '/' . bgl360_di_page_name_import ); exit;
-
 }
 
 
