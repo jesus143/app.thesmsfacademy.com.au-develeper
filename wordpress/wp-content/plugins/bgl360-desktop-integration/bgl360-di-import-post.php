@@ -1,6 +1,15 @@
 <?php
+
+
+
 if(isset($_POST['bgl360_di_import'])) {
 
+    require_once('D:\\inetpub\\devapp\\wwwroot\\wp-content/plugins/gravityforms/includes/api.php');
+
+
+
+
+ 
     $current_user = wp_get_current_user();
     $fund = new \App\Fund();
     $trustee = new \App\Trustees();
@@ -8,9 +17,6 @@ if(isset($_POST['bgl360_di_import'])) {
 
     $formId = intval($_POST['import_at']);
     $entry = array();
-
-    $entry['form_id'] = $formId;
-    $entry['formId' ] = $formId;
 
 
 
@@ -97,21 +103,7 @@ if(isset($_POST['bgl360_di_import'])) {
     echo "</pre>";
 
 
-//    $importResult = GFAPI::add_entry($entry);
-
-    $newEntry = GFAPI::add_entry($entry);
-
-    if(is_string($newEntry)){
-
-        $importResult = $formId.$newEntry;
-    }
-    else {
-    //is error
-        echo print_r($newEntry,true);
-    }
-
-
-
+    $importResult = $formId.GFAPI::add_entry($entry);
 
 
     echo $importResult ;
@@ -130,4 +122,5 @@ if(isset($_POST['bgl360_di_import'])) {
     }
 
 
+    exit;
 }

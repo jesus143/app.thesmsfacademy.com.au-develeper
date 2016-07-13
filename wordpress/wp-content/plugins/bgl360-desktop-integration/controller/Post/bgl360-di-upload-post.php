@@ -68,9 +68,13 @@ if(isset($_POST['bgl360_dt_upload'])) {
     $filePath = bgl360_di_get_file_path_through_file_name($movefile['file']);
 
 
+
     $_SESSION['bgl360_di_upload_zip_file_dir'] = $filePath;
 
     echo "<br> base name = " . basename($movefile['file']);
+
+
+    echo "session path to files uploaded root directory" . $_SESSION['bgl360_di_upload_zip_file_dir'];
 
     // extract .zip file to the specific folder
     $zip = new ZipArchive;

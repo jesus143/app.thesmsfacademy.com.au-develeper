@@ -1,4 +1,5 @@
 <?php
+
 $current_user = wp_get_current_user();
 
 
@@ -7,13 +8,13 @@ $current_user = wp_get_current_user();
 //define('bgl360_di_upload_zip_file_dir_sub', $current_user->user_login);
 
 
-
-
 //define('bgl360_di_zip_upload_path', );
 $_SESSION['bgl360_di_upload_zip_file_dir'] = (!empty($_SESSION['bgl360_di_upload_zip_file_dir'])) ? $_SESSION['bgl360_di_upload_zip_file_dir'] : null;
 
 //echo "<br> bgl360_di_upload_zip_file_dir = " . $_SESSION['bgl360_di_upload_zip_file_dir'];
 
+
+echo "path   " . $_SESSION['bgl360_di_upload_zip_file_dir'];
 
 //set username when user uploaded the .zip files
 define('bgl360_di_upload_zip_file_dir', $_SESSION['bgl360_di_upload_zip_file_dir']);
@@ -23,12 +24,6 @@ define('bgl360_di_upload_zip_file_dir', $_SESSION['bgl360_di_upload_zip_file_dir
 
 //Path to the uploaded .zip file need to change
 define('bgl360_di_dbf_uploaded_file_path' , bgl360_di_upload_zip_file_dir . '/BGL Desktop Integration/temp_dbf/new/');
-
-
-
-
-
-
 
 
 define('bgl360_di_fund_deffs', bgl360_di_dbf_uploaded_file_path . 'funddefs.dbf');
@@ -47,8 +42,14 @@ $_SESSION['bgl360_di_uploaded_file_settings'] = (!empty($_SESSION['bgl360_di_upl
 
 $_SESSION['bgl360_di_uploaded_file_path_to_folder'] = (!empty($_SESSION['bgl360_di_uploaded_file_path_to_folder'])) ? $_SESSION['bgl360_di_uploaded_file_path_to_folder'] : null;
 
-$_SESSION['bgl360_di_forms'] = array( array('form_id'=>0, 'form_name'=>'- Select One -') , array('form_id'=>6, 'form_name'=>'NEW SMSF'));
-
+$_SESSION['bgl360_di_forms'] = [
+    ['form_id'=>0, 'form_name'=>'- Select One -'],
+    ['form_id'=>6, 'form_name'=>'SMSF Establishment'],
+    ['form_id'=>15, 'form_name'=>'SMSF Pension'],
+    ['form_id'=>56, 'form_name'=>'SMSF Borrowing'],
+    ['form_id'=>53, 'form_name'=>'SMSF Deed Upgrade'],
+    ['form_id'=>65, 'form_name'=>'SMSF Change of Trustee']
+];
 
 
 //$_SESSION['bgl360_di_custom_upload_name']  = '';

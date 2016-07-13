@@ -1,6 +1,19 @@
 
 
-<?php if(!function_exists('wp_get_current_user')) {include(ABSPATH . "wp-includes/pluggable.php");}
+
+<?php
+//error_reporting('-1');
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+//define('WP_USE_THEMES', false);
+//define('STYLESHEETPATH', '');
+//define('TEMPLATEPATH', '');
+//include(ABSPATH . "wp-includes/query.php");
+//require "D:\\inetpub\\devapp\\wwwroot\\wp-blog-header.php";
+
+ if(!function_exists('wp_get_current_user')) {include(ABSPATH . "wp-includes/pluggable.php");}
+
+
 
 
 

@@ -1,6 +1,4 @@
-<?php
-
-session_start();
+<?php  session_start();
 /*
 Plugin Name: Bgl360 Desktop Integration
 Plugin URI: https://www.automationlab.com.au
